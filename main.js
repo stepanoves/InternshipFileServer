@@ -55,7 +55,6 @@ const server = http.createServer(function (req, res) {
         });
     }
 
-    console.log(req.method);
 });
 
 

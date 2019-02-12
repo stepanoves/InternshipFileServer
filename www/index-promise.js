@@ -86,9 +86,7 @@
         div.setAttribute('class', 'form-group');
 
         const area = document.createElement('textarea');
-        // area.addEventListener('keyup', (event) => {
-        //     temp.push(String.fromCharCode(event.keyCode));
-        // })
+
         const btn = document.createElement('button');
         btn.setAttribute('class', 'btn btn-primary');
         btn.innerText = 'Сохранить';

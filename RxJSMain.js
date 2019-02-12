@@ -20,7 +20,6 @@ const server = http.createServer(function (req, res) {
 
     const path = url.parse(req.url).pathname + '';
     const validPath = [...path].slice(1).join('');
-    console.log(req.method)
     
     if (req.method === 'GET') {
         rxw.defineType(validPath)
@@ -76,4 +75,3 @@ const server = http.createServer(function (req, res) {
 
 
 server.listen(8080);
-// rxw.readFile('files/file2.txt').subscribe(o => console.log(o));

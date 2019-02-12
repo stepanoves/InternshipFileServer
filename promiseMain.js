@@ -5,7 +5,7 @@ const {PromiseFSWorker} = require('./FileSystem/PromiseFSWorker');
 const ps = new PromiseFSWorker();
 const headers = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'OPTIONS, POST, GET, PUT',
+    'Access-Control-Allow-Methods': 'OPTIONS, POST, GET, PUT, DELETE',
     'Access-Control-Max-Age': 2592000,
     'Content-Type': 'application/json'
 }
@@ -19,7 +19,6 @@ const server = http.createServer(function (req, res) {
 
     const path = url.parse(req.url).pathname + '';
     const validPath = [...path].slice(1).join('');
-    console.log(validPath)
     
     if (req.method === 'GET') {
         ps.defineType(validPath)
@@ -51,7 +50,6 @@ const server = http.createServer(function (req, res) {
     if (req.method === 'PUT') {
         req.on('data', (data) => {
             const obj = JSON.parse(data);
-            console.log(data)
             ps.updateFile(validPath, obj.text)
                 .then(result => {
                     res.statusCode = 201;
@@ -68,6 +66,11 @@ const server = http.createServer(function (req, res) {
                 res.statusMessage = result;
                 res.end();
             });
+    }
+
+    if(req.method === 'OPTIONS') {
+        res.statusCode = 200;
+        res.end();
     }
 
 });
