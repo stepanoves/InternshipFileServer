@@ -4,6 +4,7 @@ class CallbackFSWorker {
 
     getList(path, callback) {
         fs.readdir(path, (err, items) => {
+            if(err) throw err;
             callback(items.map(item => item));
         })   
     }
@@ -68,7 +69,6 @@ class CallbackFSWorker {
     }
 
     deleteFile(path, callback) {
-        console.log(`files${path}`)
         fs.unlink(`files${path}`, (err) => {
             if(err) throw err;
             callback(err);
