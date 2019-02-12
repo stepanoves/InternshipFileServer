@@ -2,7 +2,7 @@ const host = 'http://localhost:8080';
 let tempText = '';
 let currentPath = [];
 const createFileButton = document.querySelector('.create-file');
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.open('GET', host);
 xhr.send(); 
 
